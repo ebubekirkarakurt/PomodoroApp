@@ -1,0 +1,16 @@
+{
+    "tasks":[
+        {
+            "title": "Task1",
+            "workTime": 20,
+            "breakTime": 5,
+            "session": 4
+        },
+        {
+            "title": "Task2",
+            "workTime": 10,
+            "breakTime": 5,
+            "session": 4
+        }
+    ]
+}
