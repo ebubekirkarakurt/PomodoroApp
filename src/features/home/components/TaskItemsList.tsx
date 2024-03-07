@@ -22,18 +22,18 @@ const TaskItemsList = (props: Props) => {
     (state: RootState) => state.isPressed.pressed,
   );
 
-  const tasks = useGetTaskQuery("") || [];
-  /*console.log(JSON.stringify(tasks.currentData));*/
+  const {data, isLoading} = useGetTaskQuery("") || [];
+  // console.log(JSON.stringify(data));
   
   const navigation = useAppNavigation();
 
   return (
     <View style={styles.main}>
       <Text style={{ fontSize: 22, marginBottom: 20 }}>All Tasks</Text>
-      { tasks && isPressed === false ? (
+      { data && isPressed === false ? (
         <FlatList
           style={{height: 500}}
-          data={tasks.currentData}
+          data={data}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => {
             return (

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomIcon from "../../../components/Icon/CustomIcon";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { setPressed } from "../../../redux/action/isPressedSlider";
@@ -18,12 +18,15 @@ type Props = {};
 const AddTaskContainer = (props: Props) => {
   const [text, setText] = useState("");
   const [workTime, setWorkTime] = useState(0)
+  const [breakTime, setBreakTime] = useState(0)
+  const [session, setSession] = useState(0)
 
   const dispatch = useAppDispatch();
 
   const isPressed = useAppSelector(
     (state: RootState) => state.isPressed.pressed,
   );
+
   
   return (
     <View style={styles.main}>
@@ -47,11 +50,13 @@ const AddTaskContainer = (props: Props) => {
         />
       </View>
       <View style={styles.timeSection}>
-        <Text style={styles.title}>Minutes Per Work: 12m </Text>
+        <Text style={styles.title}>Minutes Per Work: {workTime}m </Text>
         <View style={styles.sectionLabel}>
           <TouchableOpacity
             style={styles.timeBtn}
-            onPress={() => console.log("minustes")}
+            onPress={() =>{
+              setWorkTime((prev) => prev + 5)
+            }}
           >
             <CustomIcon iconName="plus" size={20} color="black" />
           </TouchableOpacity>
@@ -65,18 +70,22 @@ const AddTaskContainer = (props: Props) => {
           />
           <TouchableOpacity
             style={styles.timeBtn}
-            onPress={() => console.log("minustes2") }
+            onPress={() => {
+              setWorkTime((prev) => prev - 5)
+            }}
           >
             <CustomIcon iconName="minus" size={20} color="black" />
           </TouchableOpacity>
         </View>
       </View>
       <View style={styles.timeSection}>
-        <Text style={styles.title}>Minutes Per Break: 12m </Text>
+        <Text style={styles.title}>Minutes Per Break: {breakTime}m </Text>
         <View style={styles.sectionLabel}>
           <TouchableOpacity
             style={styles.timeBtn}
-            onPress={() => console.log("minustes3")}
+            onPress={() => {
+              setBreakTime((prev) => prev + 5)
+            }}
           >
             <CustomIcon iconName="plus" size={20} color="black" />
           </TouchableOpacity>
@@ -90,7 +99,9 @@ const AddTaskContainer = (props: Props) => {
           />
           <TouchableOpacity
             style={styles.timeBtn}
-            onPress={() => console.log("minustes4")}
+            onPress={() => {
+              setBreakTime((prev) => prev - 5)
+            }}
           >
             <CustomIcon iconName="minus" size={20} color="black" />
           </TouchableOpacity>
@@ -109,7 +120,7 @@ const AddTaskContainer = (props: Props) => {
                 <TouchableOpacity
                   style={styles.sessionItemContainer}
                   onPress={() => {
-                    console.log("minustes5")
+                    setSession(item)
                   }}
                 >
                   <Text

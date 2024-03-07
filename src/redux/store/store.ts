@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     isPressed: isPressedSlider,
 
-    [getTasks.reducerPath] : getTasks.reducer
+    [getTasks.reducerPath]: getTasks.reducer,
 
   },
   middleware: (getDefaultMiddleware) =>  
