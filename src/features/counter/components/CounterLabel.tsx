@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-type Props = {};
+type Props = {
+  workTime: number
+};
 
-const CounterLabel = (props: Props) => {
+const CounterLabel = ({workTime}: Props) => {
   return (
     <View style={styles.main}>
-      <Text style={styles.txt}>Stay focused for 60 minutes</Text>
+      <Text style={styles.txt}>Stay focused for {workTime} minutes</Text>
     </View>
   );
 };

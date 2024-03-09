@@ -20,7 +20,7 @@ const Counter = ({route}: Props) => {
     <View style={styles.main}>
       <CounterHeader />
       <CounterItemInfo title={item.title} workTime={item.workTime} />
-      <ProgressBar />
+      <ProgressBar workTime={item.workTime} session={item.session} breakTime={item.breakTime} />
     </View>
   );
 };

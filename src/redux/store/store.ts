@@ -1,18 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import isPressedSlider from "../action/isPressedSlider";
-import { getTasks } from "@/features/service/getTask";
+import { taskService } from "@/features/service/taskService";
 
 export const store = configureStore({
   reducer: {
     isPressed: isPressedSlider,
 
-    [getTasks.reducerPath]: getTasks.reducer,
-
+    [taskService.reducerPath]: taskService.reducer,
   },
+  
   middleware: (getDefaultMiddleware) =>  
     getDefaultMiddleware().concat(
-      getTasks.middleware,
+      taskService.middleware,
     )
 });
 

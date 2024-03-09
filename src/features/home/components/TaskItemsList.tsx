@@ -5,14 +5,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store/store";
 import EmptyListContainer from "./EmptyListContainer";
 import CustomIcon from "@/components/Icon/CustomIcon";
 import { Surface } from "react-native-paper";
 import { useAppNavigation } from "@/navigation/utils/useAppNavigator";
-import { useGetTaskQuery } from "@/features/service/getTask";
+import { useGetTaskQuery } from "@/features/service/taskService";
 
 type Props = {};
 
@@ -23,7 +23,7 @@ const TaskItemsList = (props: Props) => {
   );
 
   const {data, isLoading} = useGetTaskQuery("") || [];
-  // console.log(JSON.stringify(data));
+  // console.log("data: ", JSON.stringify(data, null, 2));
   
   const navigation = useAppNavigation();
 

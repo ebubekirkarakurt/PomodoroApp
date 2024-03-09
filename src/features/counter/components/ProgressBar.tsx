@@ -10,30 +10,48 @@ import * as Progress from "react-native-progress";
 import { useAppNavigation } from "@/navigation/utils/useAppNavigator";
 import CounterLabel from "./CounterLabel";
 
-type Props = {};
+type Props = {
+  workTime: number,
+  session: number,
+  breakTime: number,
+};
 
-const ProgressBar = (props: Props) => {
+const ProgressBar = ({ workTime, session, breakTime }: Props) => {
 
-  const [timerValue, setTimerValue] = useState(12);
+  const [timerValue, setTimerValue] = useState<number>(workTime);
   const [isPressed, setIsPressed] = useState(false);
+  const [currentSession, setCurrentSession] = useState(0)
 
   const navigation = useAppNavigation();
-
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTimerValue((prevValue) => (prevValue >= 0 ? prevValue - 1 : 0));
-    }, 1000);
-
-    setTimeout(() => {
-      clearInterval(intervalId);
-    }, timerValue * 1000); // Timer pause automatically
+      setTimerValue((prevValue: number) => (prevValue >= 1 ? prevValue - 1 : 0));
+    }, 1000); // 60.000 means 60 seconds 
 
     if (isPressed) {
       clearInterval(intervalId);
     }
 
     return () => clearInterval(intervalId);
-  }, [isPressed]);
+  }, [isPressed, timerValue]);
+
+
+  const startAgain = () => {
+    console.log("fitdi");
+    
+    if(timerValue == 0 && currentSession !== session ){
+      setTimeout(() => {
+        setTimerValue(workTime)
+        setCurrentSession((prev: number) => prev + 1)
+      }, breakTime * 1000)  
+    }
+  }
+
+  if(currentSession < session){
+    startAgain();
+  }
+
 
   function giveUp() {
     setIsPressed(true);
@@ -57,17 +75,27 @@ const ProgressBar = (props: Props) => {
     <View style={styles.main}>
       <Progress.Circle
         showsText={true}
-        formatText={() => <Text>{timerValue} minutes</Text>}
+        formatText={() => 
+        <Text>
+          {
+            currentSession == session 
+            ?
+              "Last Round!!"
+            : 
+            timerValue == 0 ? "Rest Time: " + breakTime + " minutes" : timerValue + " minutes"  
+          }
+        </Text>
+        }
         textStyle={{ fontSize: 15, fontWeight: "400", color: "black" }}
         size={200}
         thickness={18}
         unfilledColor="#D9D9D9"
         indeterminate={false}
         color="#99CC29"
-        progress={timerValue / 12}
+        progress={ timerValue / workTime }
         borderColor="transparent"
       />
-      <CounterLabel />
+      <CounterLabel workTime={workTime} />
       <TouchableOpacity
         style={[styles.btn, { backgroundColor: "blue" }]}
         onPress={() => setIsPressed(!isPressed)}

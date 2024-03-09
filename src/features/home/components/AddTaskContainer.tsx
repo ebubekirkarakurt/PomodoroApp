@@ -3,20 +3,20 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CustomIcon from "../../../components/Icon/CustomIcon";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { setPressed } from "../../../redux/action/isPressedSlider";
 import { RootState } from "../../../redux/store/store";
+import { useCreateTaskMutation } from "@/features/service/taskService";
 
 type Props = {};
 
 const AddTaskContainer = (props: Props) => {
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
   const [workTime, setWorkTime] = useState(0)
   const [breakTime, setBreakTime] = useState(0)
   const [session, setSession] = useState(0)
@@ -27,6 +27,7 @@ const AddTaskContainer = (props: Props) => {
     (state: RootState) => state.isPressed.pressed,
   );
 
+  const [ createTask,  { isLoading } ] = useCreateTaskMutation();
   
   return (
     <View style={styles.main}>
@@ -44,8 +45,8 @@ const AddTaskContainer = (props: Props) => {
         </View>
         <TextInput
           style={styles.input}
-          value={text}
-          onChangeText={(txt) => setText(txt)}
+          value={title}
+          onChangeText={(txt) => setTitle(txt)}
           placeholder="New task here.."
         />
       </View>
@@ -138,6 +139,7 @@ const AddTaskContainer = (props: Props) => {
         style={styles.btn}
         onPress={() => {
           dispatch(setPressed(!isPressed));
+          createTask({ title, workTime, breakTime, session})    
         }}
       >
         <Text style={styles.btnTxt}>Add Task</Text>

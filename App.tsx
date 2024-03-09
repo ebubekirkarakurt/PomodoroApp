@@ -13,7 +13,7 @@ export default function App() {
       <StatusBar translucent={false} />
       <QueryClientProvider client={client} >
         <Provider store={store}>
-          <RootNavigator />
+            <RootNavigator />
         </Provider>
       </QueryClientProvider>
     </NavigationContainer>
