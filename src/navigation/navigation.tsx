@@ -7,7 +7,12 @@ import Counter from "../features/counter/screens/Counter";
 
 export type RootStackParamsList = {
   Home: undefined;
-  Counter: undefined;
+  Counter: {
+    title: string,
+    workTime: number,
+    breakTime: number,
+    session: number
+  };
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamsList>();

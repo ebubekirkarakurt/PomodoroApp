@@ -36,6 +36,7 @@ const TaskItemsList = (props: Props) => {
           data={data}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => {
+
             return (
               <Surface style={styles.taskContainer} elevation={3}>
                 <View style={styles.emojiContainer}>
@@ -51,7 +52,12 @@ const TaskItemsList = (props: Props) => {
                 </View>
                 <View style={styles.playContainer}>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Counter")}
+                    onPress={() => navigation.navigate("Counter", {
+                      title: item.title, 
+                      workTime: item.workTime, 
+                      breakTime: item.breakTime, 
+                      session: item.session
+                    })}
                   >
                     <CustomIcon
                       iconName="play-outline"

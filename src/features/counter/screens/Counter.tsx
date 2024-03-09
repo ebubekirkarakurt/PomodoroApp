@@ -3,14 +3,23 @@ import React from "react";
 import CounterHeader from "../components/CounterHeader";
 import CounterItemInfo from "../components/CounterItemInfo";
 import ProgressBar from "../components/ProgressBar";
+import { RouteProp } from "@react-navigation/native";
+import { RootStackParamsList } from "@/navigation/navigation";
 
-type Props = {};
+type CounterRouteProp = RouteProp<RootStackParamsList, 'Counter'>;
 
-const Counter = (props: Props) => {
+type Props = {
+  route: CounterRouteProp
+};
+
+const Counter = ({route}: Props) => {
+  
+  const item = route.params;
+
   return (
     <View style={styles.main}>
       <CounterHeader />
-      <CounterItemInfo />
+      <CounterItemInfo title={item.title} workTime={item.workTime} />
       <ProgressBar />
     </View>
   );

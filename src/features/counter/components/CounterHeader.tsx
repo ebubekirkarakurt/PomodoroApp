@@ -22,7 +22,6 @@ export default CounterHeader;
 
 const styles = StyleSheet.create({
   main: {
-    marginTop: 50,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

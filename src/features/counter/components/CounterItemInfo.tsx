@@ -3,9 +3,12 @@ import React from 'react'
 import { Surface } from 'react-native-paper'
 import CustomIcon from '@/components/Icon/CustomIcon'
 
-type Props = {}
+type Props = {
+  title: string,
+  workTime: number
+}
 
-const CounterItemInfo = (props: Props) => {
+const CounterItemInfo = ({title, workTime}: Props) => {
 
   return (
        <Surface style={styles.taskContainer} elevation={3}>
@@ -17,8 +20,8 @@ const CounterItemInfo = (props: Props) => {
                   />
                 </View>
                 <View style={{ flex: 1, margin: 5 }}>
-                  <Text style={styles.tasktitle}>Task Name</Text>
-                  <Text style={styles.taskTime}>12 minutes</Text>
+                  <Text style={styles.tasktitle}>{title}</Text>
+                  <Text style={styles.taskTime}>{workTime} minutes</Text>
                 </View>
                 <View style={styles.playContainer}>
                     <Image
