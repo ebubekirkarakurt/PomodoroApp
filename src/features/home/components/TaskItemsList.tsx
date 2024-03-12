@@ -1,11 +1,12 @@
 import {
   FlatList,
+  RefreshControl,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store/store";
 import EmptyListContainer from "./EmptyListContainer";
@@ -18,14 +19,27 @@ type Props = {};
 
 const TaskItemsList = (props: Props) => {
 
+  const {data, isLoading, refetch} = useGetTaskQuery("");
+  // console.log("data: ", JSON.stringify(data, null, 2));
+  
+  const [isRefreshed, setIsRefreshed] = useState(false)
+
   const isPressed = useAppSelector(
     (state: RootState) => state.isPressed.pressed,
   );
-
-  const {data, isLoading} = useGetTaskQuery("") || [];
-  // console.log("data: ", JSON.stringify(data, null, 2));
   
   const navigation = useAppNavigation();
+
+  const onRefresh = () => {
+    setIsRefreshed(true)
+    refetch();
+
+    setTimeout(() => {
+      setIsRefreshed(false);
+    }, 1000);
+    
+  }
+
 
   return (
     <View style={styles.main}>
@@ -35,6 +49,9 @@ const TaskItemsList = (props: Props) => {
           style={{height: 500}}
           data={data}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={isRefreshed} onRefresh={onRefresh} />
+          }
           renderItem={({ item }) => {
 
             return (

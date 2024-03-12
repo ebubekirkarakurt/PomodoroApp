@@ -38,7 +38,6 @@ const ProgressBar = ({ workTime, session, breakTime }: Props) => {
 
 
   const startAgain = () => {
-    console.log("fitdi");
     
     if(timerValue == 0 && currentSession !== session ){
       setTimeout(() => {
