@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { Surface } from "react-native-paper";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Surface } from 'react-native-paper';
 
 type Props = {};
 
@@ -16,14 +16,14 @@ export default EmptyListContainer;
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     margin: 30,
     borderRadius: 10,
   },
   contentTxt: {
     fontSize: 20,
-    textAlign: "center",
-    fontWeight: "600",
+    textAlign: 'center',
+    fontWeight: '600',
     padding: 20,
   },
 });

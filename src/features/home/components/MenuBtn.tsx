@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import CustomIcon from "../../../components/Icon/CustomIcon";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import CustomIcon from '../../../components/Icon/CustomIcon';
 
 type Props = {};
 

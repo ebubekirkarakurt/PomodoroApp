@@ -1,7 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
-import { useAppNavigation } from "@/navigation/utils/useAppNavigator";
-import CustomIcon from "@/components/Icon/CustomIcon";
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { useAppNavigation } from '@/navigation/utils/useAppNavigator';
+import CustomIcon from '@/components/Icon/CustomIcon';
 
 type Props = {};
 
@@ -22,13 +22,13 @@ export default CounterHeader;
 
 const styles = StyleSheet.create({
   main: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 20,
   },
   headerTxt: {
     fontSize: 22,
-    fontWeight: "600",
+    fontWeight: '600',
   },
 });

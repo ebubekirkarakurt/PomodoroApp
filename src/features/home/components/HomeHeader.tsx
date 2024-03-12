@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import MenuBtn from "./MenuBtn";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import MenuBtn from './MenuBtn';
 
 type Props = {};
 
@@ -20,18 +20,18 @@ export default HomeHeader;
 
 const styles = StyleSheet.create({
   main: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     margin: 20,
   },
   headerTxt: {
     fontSize: 28,
-    fontWeight: "600",
-    color: "#1a1a1a",
+    fontWeight: '600',
+    color: '#1a1a1a',
   },
   headerLabel: {
     fontSize: 18,
-    color: "#333333",
+    color: '#333333',
   },
 });

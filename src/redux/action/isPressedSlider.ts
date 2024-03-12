@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type ListType = {
   pressed: boolean;
@@ -9,7 +9,7 @@ const initialState: ListType = {
 };
 
 export const isPressedSlider = createSlice({
-  name: "isPressed",
+  name: 'isPressed',
   initialState,
   reducers: {
     setPressed: (state, action: PayloadAction<boolean>) => {

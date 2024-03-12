@@ -1,8 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
-import CustomIcon from "../../../components/Icon/CustomIcon";
-import { useAppDispatch } from "../../../redux/hooks";
-import { setPressed } from "../../../redux/action/isPressedSlider";
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import CustomIcon from '../../../components/Icon/CustomIcon';
+import { useAppDispatch } from '../../../redux/hooks';
+import { setPressed } from '../../../redux/action/isPressedSlider';
 
 type Props = {};
 
@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   btnContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "white",
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
     borderRadius: 20,
   },
   container: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   icon: {
-    position: "absolute",
+    position: 'absolute',
     right: 10,
     padding: 10,
   },

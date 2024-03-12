@@ -5,21 +5,21 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-} from "react-native";
-import React, { useState } from "react";
-import CustomIcon from "../../../components/Icon/CustomIcon";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { setPressed } from "../../../redux/action/isPressedSlider";
-import { RootState } from "../../../redux/store/store";
-import { useCreateTaskMutation } from "@/features/service/taskService";
+} from 'react-native';
+import React, { useState } from 'react';
+import CustomIcon from '../../../components/Icon/CustomIcon';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { setPressed } from '../../../redux/action/isPressedSlider';
+import { RootState } from '../../../redux/store/store';
+import { useCreateTaskMutation } from '@/features/service/taskService';
 
 type Props = {};
 
 const AddTaskContainer = (props: Props) => {
-  const [title, setTitle] = useState("");
-  const [workTime, setWorkTime] = useState(0)
-  const [breakTime, setBreakTime] = useState(0)
-  const [session, setSession] = useState(0)
+  const [title, setTitle] = useState('');
+  const [workTime, setWorkTime] = useState(0);
+  const [breakTime, setBreakTime] = useState(0);
+  const [session, setSession] = useState(0);
 
   const dispatch = useAppDispatch();
 
@@ -27,8 +27,8 @@ const AddTaskContainer = (props: Props) => {
     (state: RootState) => state.isPressed.pressed,
   );
 
-  const [ createTask,  { isLoading } ] = useCreateTaskMutation();
-  
+  const [createTask, { isLoading }] = useCreateTaskMutation();
+
   return (
     <View style={styles.main}>
       <View style={styles.mainHeader}>
@@ -55,8 +55,8 @@ const AddTaskContainer = (props: Props) => {
         <View style={styles.sectionLabel}>
           <TouchableOpacity
             style={styles.timeBtn}
-            onPress={() =>{
-              setWorkTime((prev) => prev + 5)
+            onPress={() => {
+              setWorkTime((prev) => prev + 5);
             }}
           >
             <CustomIcon iconName="plus" size={20} color="black" />
@@ -65,14 +65,14 @@ const AddTaskContainer = (props: Props) => {
             style={{
               marginTop: 7,
               marginBottom: 7,
-              borderColor: "white",
+              borderColor: 'white',
               borderWidth: 0.9,
             }}
           />
           <TouchableOpacity
             style={styles.timeBtn}
             onPress={() => {
-              setWorkTime((prev) => prev - 5)
+              setWorkTime((prev) => prev - 5);
             }}
           >
             <CustomIcon iconName="minus" size={20} color="black" />
@@ -85,7 +85,7 @@ const AddTaskContainer = (props: Props) => {
           <TouchableOpacity
             style={styles.timeBtn}
             onPress={() => {
-              setBreakTime((prev) => prev + 5)
+              setBreakTime((prev) => prev + 5);
             }}
           >
             <CustomIcon iconName="plus" size={20} color="black" />
@@ -94,14 +94,14 @@ const AddTaskContainer = (props: Props) => {
             style={{
               marginTop: 7,
               marginBottom: 7,
-              borderColor: "white",
+              borderColor: 'white',
               borderWidth: 0.9,
             }}
           />
           <TouchableOpacity
             style={styles.timeBtn}
             onPress={() => {
-              setBreakTime((prev) => prev - 5)
+              setBreakTime((prev) => prev - 5);
             }}
           >
             <CustomIcon iconName="minus" size={20} color="black" />
@@ -121,11 +121,11 @@ const AddTaskContainer = (props: Props) => {
                 <TouchableOpacity
                   style={styles.sessionItemContainer}
                   onPress={() => {
-                    setSession(item)
+                    setSession(item);
                   }}
                 >
                   <Text
-                    style={{ fontSize: 20, width: 25, textAlign: "center" }}
+                    style={{ fontSize: 20, width: 25, textAlign: 'center' }}
                   >
                     {item}
                   </Text>
@@ -139,7 +139,7 @@ const AddTaskContainer = (props: Props) => {
         style={styles.btn}
         onPress={() => {
           dispatch(setPressed(!isPressed));
-          createTask({ title, workTime, breakTime, session})    
+          createTask({ title, workTime, breakTime, session });
         }}
       >
         <Text style={styles.btnTxt}>Add Task</Text>
@@ -152,83 +152,83 @@ export default AddTaskContainer;
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 20,
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
     flex: 1,
   },
   mainHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   mainTitle: {
     fontSize: 25,
-    fontWeight: "600",
+    fontWeight: '600',
     padding: 10,
   },
   emojiContainer: {
     padding: 8,
-    backgroundColor: "#d3d3d3",
+    backgroundColor: '#d3d3d3',
     borderRadius: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 10,
   },
   sessionContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 10,
-    alignItems: "center",
-    justifyContent: "space-between",
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   sessionItemContainer: {
-    backgroundColor: "#d3d3d3",
+    backgroundColor: '#d3d3d3',
     padding: 5,
-    alignItems: "center",
-    flexDirection: "row",
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   input: {
     flex: 1,
-    backgroundColor: "#d3d3d3",
+    backgroundColor: '#d3d3d3',
     padding: 13,
     borderRadius: 10,
     marginStart: 10,
     fontSize: 17,
   },
   timeSection: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 10,
   },
   title: {
     fontSize: 18,
   },
   sectionLabel: {
-    flexDirection: "row",
-    backgroundColor: "#d3d3d3",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    backgroundColor: '#d3d3d3',
+    justifyContent: 'space-around',
     borderRadius: 5,
   },
   timeBtn: {
     padding: 2,
-    alignItems: "center",
+    alignItems: 'center',
     width: 40,
   },
   btn: {
-    alignItems: "center",
-    backgroundColor: "green",
+    alignItems: 'center',
+    backgroundColor: 'green',
     borderRadius: 10,
     marginTop: 30,
   },
   btnTxt: {
     fontSize: 20,
     padding: 10,
-    color: "white",
+    color: 'white',
   },
 });

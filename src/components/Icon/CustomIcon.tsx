@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import React from "react";
+import { StyleSheet, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React from 'react';
 
 type Props = {
   iconName: string;
@@ -8,7 +8,7 @@ type Props = {
   color: string;
 };
 
-const CustomIcon = ({ iconName, size, color = "black" }: Props) => {
+const CustomIcon = ({ iconName, size, color = 'black' }: Props) => {
   return (
     <View style={styles.icon}>
       <Icon name={iconName} size={size} color={color}></Icon>

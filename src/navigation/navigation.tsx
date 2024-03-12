@@ -1,17 +1,17 @@
 import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
-} from "@react-navigation/native-stack";
-import Home from "../features/home/screens/Home";
-import Counter from "../features/counter/screens/Counter";
+} from '@react-navigation/native-stack';
+import Home from '../features/home/screens/Home';
+import Counter from '../features/counter/screens/Counter';
 
 export type RootStackParamsList = {
   Home: undefined;
   Counter: {
-    title: string,
-    workTime: number,
-    breakTime: number,
-    session: number
+    title: string;
+    workTime: number;
+    breakTime: number;
+    session: number;
   };
 };
 

@@ -1,27 +1,6 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Task1",
-      "workTime": 20,
-      "breakTime": 5,
-      "session": 4
-    },
-    {
-      "id": 2,
-      "title": "Task2",
-      "workTime": 10,
-      "breakTime": 5,
-      "session": 4
-    },
-    {
-      "id": 3,
-      "title": "Task3",
-      "workTime": 10,
-      "breakTime": 5,
-      "session": 4
-    },
-    {
       "id": 4,
       "title": "Task4",
       "workTime": 12,
