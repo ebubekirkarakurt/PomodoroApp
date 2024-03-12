@@ -24,6 +24,7 @@ export const taskService = createApi({
           workTime: data.workTime,
           breakTime: data.breakTime,
           session: data.session,
+          emoji: data.emoji,
         }),
       }),
     }),

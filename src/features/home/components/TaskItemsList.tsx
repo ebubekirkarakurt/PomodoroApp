@@ -67,11 +67,7 @@ const TaskItemsList = (props: Props) => {
               <Swipeable rightButtons={rightButtons(item.id)}>
                 <Surface style={styles.taskContainer} elevation={3}>
                   <View style={styles.emojiContainer}>
-                    <CustomIcon
-                      iconName="sticker-emoji"
-                      size={20}
-                      color="black"
-                    />
+                    <Text> {item.emoji} </Text>
                   </View>
                   <View style={{ flex: 1, margin: 5 }}>
                     <Text style={styles.tasktitle}>{item.title}</Text>
@@ -85,6 +81,7 @@ const TaskItemsList = (props: Props) => {
                           workTime: item.workTime,
                           breakTime: item.breakTime,
                           session: item.session,
+                          emoji: item.emoji,
                         })
                       }
                     >

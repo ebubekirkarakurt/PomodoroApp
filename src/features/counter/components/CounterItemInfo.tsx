@@ -6,13 +6,15 @@ import CustomIcon from '@/components/Icon/CustomIcon';
 type Props = {
   title: string;
   workTime: number;
+  emoji: string;
 };
 
-const CounterItemInfo = ({ title, workTime }: Props) => {
+const CounterItemInfo = ({ title, workTime, emoji }: Props) => {
+  console.log(emoji);
   return (
     <Surface style={styles.taskContainer} elevation={3}>
       <View style={styles.emojiContainer}>
-        <CustomIcon iconName="sticker-emoji" size={20} color="black" />
+        <Text> {emoji} </Text>
       </View>
       <View style={{ flex: 1, margin: 5 }}>
         <Text style={styles.tasktitle}>{title}</Text>
@@ -36,6 +38,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#f1f1f1',
     borderRadius: 10,
+    fontSize: 20,
   },
   taskContainer: {
     margin: 25,

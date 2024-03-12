@@ -13,6 +13,8 @@ import { setPressed } from '../../../redux/action/isPressedSlider';
 import { RootState } from '../../../redux/store/store';
 import { useCreateTaskMutation } from '@/features/service/taskService';
 
+import EmojiSelectorContainer from './EmojiSelectorContainer';
+
 type Props = {};
 
 const AddTaskContainer = (props: Props) => {
@@ -20,8 +22,11 @@ const AddTaskContainer = (props: Props) => {
   const [workTime, setWorkTime] = useState(0);
   const [breakTime, setBreakTime] = useState(0);
   const [session, setSession] = useState(0);
+  // *************************** ZUSTANDDDDD ******************************** //
+  const [isEmojiActive, setIsEmojiActive] = useState(false);
 
   const dispatch = useAppDispatch();
+  const emoji = useAppSelector((state: RootState) => state.setEmoji.emoji);
 
   const isPressed = useAppSelector(
     (state: RootState) => state.isPressed.pressed,
@@ -39,8 +44,8 @@ const AddTaskContainer = (props: Props) => {
       </View>
       <View style={styles.inputContainer}>
         <View style={styles.emojiContainer}>
-          <TouchableOpacity>
-            <CustomIcon iconName="sticker-emoji" size={20} color="black" />
+          <TouchableOpacity onPress={() => setIsEmojiActive(!isEmojiActive)}>
+            <Text style={{ padding: 5, fontSize: 20 }}>{emoji}</Text>
           </TouchableOpacity>
         </View>
         <TextInput
@@ -50,96 +55,102 @@ const AddTaskContainer = (props: Props) => {
           placeholder="New task here.."
         />
       </View>
-      <View style={styles.timeSection}>
-        <Text style={styles.title}>Minutes Per Work: {workTime}m </Text>
-        <View style={styles.sectionLabel}>
-          <TouchableOpacity
-            style={styles.timeBtn}
-            onPress={() => {
-              setWorkTime((prev) => prev + 5);
-            }}
-          >
-            <CustomIcon iconName="plus" size={20} color="black" />
-          </TouchableOpacity>
-          <View
-            style={{
-              marginTop: 7,
-              marginBottom: 7,
-              borderColor: 'white',
-              borderWidth: 0.9,
-            }}
-          />
-          <TouchableOpacity
-            style={styles.timeBtn}
-            onPress={() => {
-              setWorkTime((prev) => prev - 5);
-            }}
-          >
-            <CustomIcon iconName="minus" size={20} color="black" />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.timeSection}>
-        <Text style={styles.title}>Minutes Per Break: {breakTime}m </Text>
-        <View style={styles.sectionLabel}>
-          <TouchableOpacity
-            style={styles.timeBtn}
-            onPress={() => {
-              setBreakTime((prev) => prev + 5);
-            }}
-          >
-            <CustomIcon iconName="plus" size={20} color="black" />
-          </TouchableOpacity>
-          <View
-            style={{
-              marginTop: 7,
-              marginBottom: 7,
-              borderColor: 'white',
-              borderWidth: 0.9,
-            }}
-          />
-          <TouchableOpacity
-            style={styles.timeBtn}
-            onPress={() => {
-              setBreakTime((prev) => prev - 5);
-            }}
-          >
-            <CustomIcon iconName="minus" size={20} color="black" />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.sessionContainer}>
-        <Text style={styles.title}> Sessions: </Text>
-        <View>
-          <FlatList
-            data={[1, 2, 3, 4, 5]}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={false}
-            renderItem={({ item }) => {
-              return (
-                <TouchableOpacity
-                  style={styles.sessionItemContainer}
-                  onPress={() => {
-                    setSession(item);
-                  }}
-                >
-                  <Text
-                    style={{ fontSize: 20, width: 25, textAlign: 'center' }}
-                  >
-                    {item}
-                  </Text>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
-      </View>
+      {isEmojiActive ? (
+        <EmojiSelectorContainer />
+      ) : (
+        <>
+          <View style={styles.timeSection}>
+            <Text style={styles.title}>Minutes Per Work: {workTime}m </Text>
+            <View style={styles.sectionLabel}>
+              <TouchableOpacity
+                style={styles.timeBtn}
+                onPress={() => {
+                  setWorkTime((prev) => prev + 5);
+                }}
+              >
+                <CustomIcon iconName="plus" size={20} color="black" />
+              </TouchableOpacity>
+              <View
+                style={{
+                  marginTop: 7,
+                  marginBottom: 7,
+                  borderColor: 'white',
+                  borderWidth: 0.9,
+                }}
+              />
+              <TouchableOpacity
+                style={styles.timeBtn}
+                onPress={() => {
+                  setWorkTime((prev) => prev - 5);
+                }}
+              >
+                <CustomIcon iconName="minus" size={20} color="black" />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.timeSection}>
+            <Text style={styles.title}>Minutes Per Break: {breakTime}m </Text>
+            <View style={styles.sectionLabel}>
+              <TouchableOpacity
+                style={styles.timeBtn}
+                onPress={() => {
+                  setBreakTime((prev) => prev + 5);
+                }}
+              >
+                <CustomIcon iconName="plus" size={20} color="black" />
+              </TouchableOpacity>
+              <View
+                style={{
+                  marginTop: 7,
+                  marginBottom: 7,
+                  borderColor: 'white',
+                  borderWidth: 0.9,
+                }}
+              />
+              <TouchableOpacity
+                style={styles.timeBtn}
+                onPress={() => {
+                  setBreakTime((prev) => prev - 5);
+                }}
+              >
+                <CustomIcon iconName="minus" size={20} color="black" />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={styles.sessionContainer}>
+            <Text style={styles.title}> Sessions: </Text>
+            <View>
+              <FlatList
+                data={[1, 2, 3, 4, 5]}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                scrollEnabled={false}
+                renderItem={({ item }) => {
+                  return (
+                    <TouchableOpacity
+                      style={styles.sessionItemContainer}
+                      onPress={() => {
+                        setSession(item);
+                      }}
+                    >
+                      <Text
+                        style={{ fontSize: 20, width: 25, textAlign: 'center' }}
+                      >
+                        {item}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
+            </View>
+          </View>
+        </>
+      )}
       <TouchableOpacity
         style={styles.btn}
         onPress={() => {
           dispatch(setPressed(!isPressed));
-          createTask({ title, workTime, breakTime, session });
+          createTask({ title, workTime, breakTime, session, emoji });
         }}
       >
         <Text style={styles.btnTxt}>Add Task</Text>

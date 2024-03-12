@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import isPressedSlider from '../action/isPressedSlider';
 import { taskService } from '@/features/service/taskService';
+import setEmoji from '../action/setEmoji';
 
 export const store = configureStore({
   reducer: {
     isPressed: isPressedSlider,
+    setEmoji: setEmoji,
 
     [taskService.reducerPath]: taskService.reducer,
   },

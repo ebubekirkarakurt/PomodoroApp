@@ -12,6 +12,7 @@ export type RootStackParamsList = {
     workTime: number;
     breakTime: number;
     session: number;
+    emoji: string;
   };
 };
 

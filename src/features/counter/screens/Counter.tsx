@@ -18,7 +18,11 @@ const Counter = ({ route }: Props) => {
   return (
     <View style={styles.main}>
       <CounterHeader />
-      <CounterItemInfo title={item.title} workTime={item.workTime} />
+      <CounterItemInfo
+        title={item.title}
+        workTime={item.workTime}
+        emoji={item.emoji}
+      />
       <ProgressBar
         workTime={item.workTime}
         session={item.session}
