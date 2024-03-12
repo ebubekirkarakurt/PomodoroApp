@@ -12,17 +12,23 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setPressed } from '../../../redux/action/isPressedSlider';
 import { RootState } from '../../../redux/store/store';
 import { useCreateTaskMutation } from '@/features/service/taskService';
-
 import EmojiSelectorContainer from './EmojiSelectorContainer';
+import { useTaskStore } from '../utils/state';
 
-type Props = {};
+const AddTaskContainer = () => {
+  const {
+    title,
+    workTime,
+    breakTime,
+    session,
+    setTitle,
+    increaseWorkTime,
+    decreaseWorkTime,
+    increaseBreakTime,
+    decreaseBreakTime,
+    setSession,
+  } = useTaskStore();
 
-const AddTaskContainer = (props: Props) => {
-  const [title, setTitle] = useState('');
-  const [workTime, setWorkTime] = useState(0);
-  const [breakTime, setBreakTime] = useState(0);
-  const [session, setSession] = useState(0);
-  // *************************** ZUSTANDDDDD ******************************** //
   const [isEmojiActive, setIsEmojiActive] = useState(false);
 
   const dispatch = useAppDispatch();
@@ -65,7 +71,7 @@ const AddTaskContainer = (props: Props) => {
               <TouchableOpacity
                 style={styles.timeBtn}
                 onPress={() => {
-                  setWorkTime((prev) => prev + 5);
+                  increaseWorkTime(workTime);
                 }}
               >
                 <CustomIcon iconName="plus" size={20} color="black" />
@@ -81,7 +87,7 @@ const AddTaskContainer = (props: Props) => {
               <TouchableOpacity
                 style={styles.timeBtn}
                 onPress={() => {
-                  setWorkTime((prev) => prev - 5);
+                  decreaseWorkTime(workTime);
                 }}
               >
                 <CustomIcon iconName="minus" size={20} color="black" />
@@ -94,7 +100,7 @@ const AddTaskContainer = (props: Props) => {
               <TouchableOpacity
                 style={styles.timeBtn}
                 onPress={() => {
-                  setBreakTime((prev) => prev + 5);
+                  increaseBreakTime(breakTime);
                 }}
               >
                 <CustomIcon iconName="plus" size={20} color="black" />
@@ -110,7 +116,7 @@ const AddTaskContainer = (props: Props) => {
               <TouchableOpacity
                 style={styles.timeBtn}
                 onPress={() => {
-                  setBreakTime((prev) => prev - 5);
+                  decreaseBreakTime(breakTime);
                 }}
               >
                 <CustomIcon iconName="minus" size={20} color="black" />
