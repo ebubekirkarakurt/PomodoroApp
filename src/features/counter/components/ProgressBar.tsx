@@ -37,13 +37,12 @@ const ProgressBar = ({ workTime, session, breakTime }: Props) => {
         setTimerValue(workTime);
         setCurrentSession((prev: number) => prev + 1);
       }, breakTime * 1000);
-      
-    }else if (timerValue == 0 && currentSession === session){
-      setCurrentSession((prev: number) => prev + 1)
+    } else if (timerValue == 0 && currentSession === session) {
+      setCurrentSession((prev: number) => prev + 1);
     }
   };
 
-  if(currentSession <= session){
+  if (currentSession <= session) {
     startAgain();
   }
 
@@ -65,67 +64,56 @@ const ProgressBar = ({ workTime, session, breakTime }: Props) => {
     );
   }
 
-  const overInformation = () => {    
-    Alert.alert(
-      'Congrats !!',
-      'You have successfully passed the challenge',
-      [
-        {
-          text: 'Great! 😀',
-          onPress: () => navigation.navigate('Home'),
-        }
-      ],
-    );
-  }
-
-  console.log( " cur: ", currentSession, "ses : ", session)
+  const overInformation = () => {
+    Alert.alert('Congrats !!', 'You have successfully passed the challenge', [
+      {
+        text: 'Great! 😀',
+        onPress: () => navigation.navigate('Home'),
+      },
+    ]);
+  };
 
   return (
     <View style={styles.main}>
-     {
-      currentSession <= session
-      ?
-      <>
-      <Progress.Circle
-      showsText={true}
-      formatText={() => (
-        <Text>
-          {currentSession == session
-            ? 'Last Round!!'
-            : timerValue == 0
-              ? 'Rest Time: ' + breakTime + ' minutes'
-              : timerValue + ' minutes'}
-        </Text>
+      {currentSession <= session ? (
+        <>
+          <Progress.Circle
+            showsText={true}
+            formatText={() => (
+              <Text>
+                {currentSession == session
+                  ? 'Last Round!!'
+                  : timerValue == 0
+                    ? 'Rest Time: ' + breakTime + ' minutes'
+                    : timerValue + ' minutes'}
+              </Text>
+            )}
+            textStyle={{ fontSize: 15, fontWeight: '400', color: 'black' }}
+            size={200}
+            thickness={18}
+            unfilledColor="#D9D9D9"
+            indeterminate={false}
+            color="#99CC29"
+            progress={timerValue / workTime}
+            borderColor="transparent"
+          />
+          <CounterLabel workTime={workTime} session={session} />
+          <TouchableOpacity
+            style={[styles.btn, { backgroundColor: 'blue' }]}
+            onPress={() => setIsPressed(!isPressed)}
+          >
+            <Text style={styles.btnTxt}>Pause</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.btn, { backgroundColor: '#b23b3b' }]}
+            onPress={giveUp}
+          >
+            <Text style={styles.btnTxt}>Give Up</Text>
+          </TouchableOpacity>
+        </>
+      ) : (
+        <>{overInformation()}</>
       )}
-      textStyle={{ fontSize: 15, fontWeight: '400', color: 'black' }}
-      size={200}
-      thickness={18}
-      unfilledColor="#D9D9D9"
-      indeterminate={false}
-      color="#99CC29"
-      progress={timerValue / workTime}
-      borderColor="transparent"
-    />
-    <CounterLabel workTime={workTime} session={session} />
-    <TouchableOpacity
-      style={[styles.btn, { backgroundColor: 'blue' }]}
-      onPress={() => setIsPressed(!isPressed)}
-    >
-      <Text style={styles.btnTxt}>Pause</Text>
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={[styles.btn, { backgroundColor: '#b23b3b' }]}
-      onPress={giveUp}
-    >
-      <Text style={styles.btnTxt}>Give Up</Text>
-    </TouchableOpacity>
-    </>
-    : 
-    <>
-      {overInformation()}
-    </>
-      
-     }
     </View>
   );
 };

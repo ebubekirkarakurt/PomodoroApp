@@ -3,13 +3,15 @@ import React from 'react';
 
 type Props = {
   workTime: number;
-  session: number; 
+  session: number;
 };
 
 const CounterLabel = ({ workTime, session }: Props) => {
   return (
     <View style={styles.main}>
-      <Text style={styles.txt}>Stay focused for {workTime}x{session} minutes</Text>
+      <Text style={styles.txt}>
+        Stay focused for {workTime}x{session} minutes
+      </Text>
     </View>
   );
 };

@@ -65,7 +65,7 @@ const TaskItemsList = (props: Props) => {
           renderItem={({ item }) => {
             return (
               <Swipeable rightButtons={rightButtons(item.id)}>
-                <Surface style={styles.taskContainer} elevation={3}>
+                <Surface style={styles.taskContainer} elevation={1}>
                   <View style={styles.emojiContainer}>
                     <Text> {item.emoji} </Text>
                   </View>

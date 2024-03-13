@@ -9,7 +9,6 @@ type Props = {
 };
 
 const CounterItemInfo = ({ title, workTime, emoji }: Props) => {
-
   const rotateValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const CounterItemInfo = ({ title, workTime, emoji }: Props) => {
     });
 
     const repeatAnimation = Animated.loop(rotateAnimation);
-    
+
     repeatAnimation.start();
 
     return () => {
@@ -37,11 +36,10 @@ const CounterItemInfo = ({ title, workTime, emoji }: Props) => {
     transform: [{ rotate: interpolatedRotate }],
   };
 
-
   return (
     <Surface style={styles.taskContainer} elevation={3}>
       <Animated.View style={styles.emojiContainer}>
-        <Text > {emoji} </Text>
+        <Text> {emoji} </Text>
       </Animated.View>
       <View style={{ flex: 1, margin: 5 }}>
         <Text style={styles.tasktitle}>{title}</Text>
