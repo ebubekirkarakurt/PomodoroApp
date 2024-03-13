@@ -21,30 +21,30 @@ The Pomodoro App is a simple mobile application based on the Pomodoro technique,
 
 ## Installation
 
-Clone project
+- Clone project
 
 ```bash
   git clone https://github.com/ebubekirkarakurt/PomodroApp.git
   cd PomodroApp
 ```
-Install packages with NPM
+- Install packages with NPM
  
 ```bash
   npm install
 ```
-Run db.json
+- Run db.json
 
 ``` bash
    json-server --host 0.0.0.0 db.json
 ```
 
-Go to this path and setup your IP
+- Go to this path and setup your IP
 ``` bash
    PomodroApp/src/config/api.ts
 
 ```
 
-Start metro server
+- Start metro server
  
 ```bash
   npx expo start
