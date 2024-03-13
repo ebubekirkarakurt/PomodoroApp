@@ -2,7 +2,7 @@
 The Pomodoro App is a simple mobile application based on the Pomodoro technique, a time management method.
 
 ## Demo
-<img src="./assets/demo/demo.gif" width="300" height="250"/>
+<img src="./assets/demo/demo.gif" width="300"/>
 
 ## ScreenShots
 
