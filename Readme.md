@@ -1,8 +1,6 @@
 # Pomodro App
 The Pomodoro App is a simple mobile application based on the Pomodoro technique, a time management method.
-
-## Demo
-<img src="./assets/demo/demo.mp4" width="300"/>
+And this project inspired by [Pomodoro.](https://github.com/elifbilgep/PomodoroApp)
 
 ## ScreenShots
 
@@ -20,6 +18,9 @@ The Pomodoro App is a simple mobile application based on the Pomodoro technique,
   <h3>Task Details </h3>
   <img src="./assets/screenshots/taskDetails.png" width="300">
 </div>
+
+## Demo 
+- Go to -> PomodoroApp\assets\demo\demo.mp4
 
 ## Installation
 
