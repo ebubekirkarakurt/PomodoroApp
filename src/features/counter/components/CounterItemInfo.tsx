@@ -1,5 +1,5 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { Animated, Image, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useRef } from 'react';
 import { Surface } from 'react-native-paper';
 
 type Props = {
@@ -10,21 +10,49 @@ type Props = {
 
 const CounterItemInfo = ({ title, workTime, emoji }: Props) => {
 
+  const rotateValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    const rotateAnimation = Animated.timing(rotateValue, {
+      toValue: 360,
+      duration: 3000,
+      useNativeDriver: true,
+    });
+
+    const repeatAnimation = Animated.loop(rotateAnimation);
+    
+    repeatAnimation.start();
+
+    return () => {
+      repeatAnimation.stop();
+    };
+  }, [rotateValue]);
+
+  const interpolatedRotate = rotateValue.interpolate({
+    inputRange: [0, 360],
+    outputRange: ['0deg', '360deg'],
+  });
+
+  const animatedStyle = {
+    transform: [{ rotate: interpolatedRotate }],
+  };
+
+
   return (
     <Surface style={styles.taskContainer} elevation={3}>
-      <View style={styles.emojiContainer}>
-        <Text> {emoji} </Text>
-      </View>
+      <Animated.View style={styles.emojiContainer}>
+        <Text > {emoji} </Text>
+      </Animated.View>
       <View style={{ flex: 1, margin: 5 }}>
         <Text style={styles.tasktitle}>{title}</Text>
         <Text style={styles.taskTime}>{workTime} minutes</Text>
       </View>
-      <View style={styles.playContainer}>
+      <Animated.View style={[styles.playContainer, animatedStyle]}>
         <Image
           source={require('../../../../assets/sand-watch.png')}
           style={styles.img}
         />
-      </View>
+      </Animated.View>
     </Surface>
   );
 };
