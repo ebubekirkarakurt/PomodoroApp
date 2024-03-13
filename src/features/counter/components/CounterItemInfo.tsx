@@ -1,7 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Surface } from 'react-native-paper';
-import CustomIcon from '@/components/Icon/CustomIcon';
 
 type Props = {
   title: string;
@@ -10,7 +9,7 @@ type Props = {
 };
 
 const CounterItemInfo = ({ title, workTime, emoji }: Props) => {
-  console.log(emoji);
+
   return (
     <Surface style={styles.taskContainer} elevation={3}>
       <View style={styles.emojiContainer}>
